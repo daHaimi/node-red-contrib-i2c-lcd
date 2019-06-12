@@ -107,9 +107,9 @@ module.exports = function (RED) {
         text_in_line2 = '\'' + text_in_line2 + '\'';
         //send message
 
-        lcd.setCurson(0, 0); // 0x80 = first line on lcd
+        lcd.setCursor(0, 0); // 0x80 = first line on lcd
         lcd.print(text_in_line1);
-        lcd.setCurson(0, 1); // 0xC0 = second line on lcd
+        lcd.setCursor(0, 1); // 0xC0 = second line on lcd
         lcd.print(text_in_line2);
       }
       //check to see if msg was sent to the msg.line1 & nothing sent to Line2
@@ -122,7 +122,7 @@ module.exports = function (RED) {
         //fix escape char
         text_in_line1 = '\'' + text_in_line1 + '\'';
         //send message
-        lcd.setCurson(0, 0); // 0x80 = first line on lcd
+        lcd.setCursor(0, 0); // 0x80 = first line on lcd
         lcd.print(text_in_line1);
       }
       //check to see if msg was sent to the msg.line2 & nothing sent to Line1
@@ -135,7 +135,7 @@ module.exports = function (RED) {
         //fix escape char
         text_in_line2 = '\'' + text_in_line2 + '\'';
         //send message
-        lcd.setCurson(0, 1); // 0xC0 = second line on lcd
+        lcd.setCursor(0, 1); // 0xC0 = second line on lcd
         lcd.print(text_in_line2);
       }
     }
