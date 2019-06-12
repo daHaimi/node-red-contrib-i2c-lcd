@@ -194,10 +194,10 @@ module.exports = function(RED)
     is_a_number_check(this.i2c_device_number, 'i2c device number', 'i2c-0 to i2c-256, only enter the  number at the end', 'Number');
     number_range_check(this.i2c_device_number, 0, 256, '0', '256', 'i2c device number', 'Number');
 
-    //Check to see that i2c address is a number and between 0x20=32 and 0x27=39
+    //Check to see that i2c address is a number and between 0x20=32 and =39
 //i2c address
-    is_a_number_check(this.i2c_address, 'i2c device address', '0x20 to 0x27', 'Hexadecimal');
-    number_range_check(this.i2c_address, 0x20, 0x27, '0x20', '0x27', 'i2c device address', 'Hexadecimal');
+    is_a_number_check(this.i2c_address, 'i2c device address', '0x20 to 0x3f', 'Hexadecimal');
+    number_range_check(this.i2c_address, 0x20, 0x3f, '0x20', '0x3f', 'i2c device address', 'Hexadecimal');
 
 //Line1
     // if Line1 of msg.* is empty, null or undefined then warn user and stop do not pass go
@@ -665,10 +665,10 @@ module.exports = function(RED)
     is_a_number_check(this.i2c_device_number, 'i2c device number', 'i2c-0 to i2c-256, only enter the  number at the end', 'Number');
     number_range_check(this.i2c_device_number, 0, 256, '0', '256', 'i2c device number', 'Number');
 
-    //Check to see that i2c address is a number and between 0x20=32 and 0x27=39
+    //Check to see that i2c address is a number and between 0x20=32 and 0x3f=39
 //i2c address
-    is_a_number_check(this.i2c_address, 'i2c device address', '0x20 to 0x27', 'Hexadecimal');
-    number_range_check(this.i2c_address, 0x20, 0x27, '0x20', '0x27', 'i2c device address', 'Hexadecimal');
+    is_a_number_check(this.i2c_address, 'i2c device address', '0x20 to 0x3f', 'Hexadecimal');
+    number_range_check(this.i2c_address, 0x20, 0x3f, '0x20', '0x3f', 'i2c device address', 'Hexadecimal');
 
     //Check to see that i2c polling is a number
 //i2c polling
