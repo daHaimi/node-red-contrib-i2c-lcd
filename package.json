@@ -1,16 +1,16 @@
 {
-  "name": "node-red-contrib-i2c-lcd-adafruit-sainsmart",
+  "name": "node-red-contrib-i2c-lcd",
   "version": "0.7.30",
-  "description": "Node for node-red to interact with Adafruit and sainsmart i2c-lcd's. Also units built using MCP23017 i2c port expander and a HD44780 LCD or conpatable 16x2 LCD. ",
+  "description": "Node for node-red to interact with i2c-lcd's.",
   "homepage": "http://github.com/meeki007/node-red-contrib-voltage_undivider",
   "bugs": {
     "url": "http://github.com/meeki007/node-red-contrib-voltage_undivider/issues"
   },
   "license": "Apache-2.0",
-  "author": "David 'Meeki007' Burrows <meeki007@gmail.com> (http://github.com/meeki007)",
+  "author": "DaHaimi",
   "repository": {
     "type": "git",
-    "url": "git://github.com/meeki007/node-red-contrib-i2c-lcd-adafruit-sainsmart.git"
+    "url": "https://github.com/daHaimi/node-red-contrib-i2c-lcd"
   },
   "keywords": [
     "node-red",
@@ -28,12 +28,11 @@
   ],
   "node-red": {
     "nodes": {
-      "i2c_LCD_Output": "i2c_LCD.js",
-      "i2c_LCD_Input": "i2c_LCD.js"
+      "i2c_LCD_Output": "i2c_LCD.js"
     }
   },
   "dependencies": {
-    "adafruit-i2c-lcd": ">=1.0.2"
+    "lcdi2c": ">=1.0.6"
   },
   "directories": {
     "doc": "doc"

@@ -40,7 +40,7 @@ module.exports = function (RED) {
       first_deploy = false;
     });
 
-    //determin if node is deployed
+    //determine if node is deployed
     deployed_i2c_LCD_Output = true;
     first_deploy = true;
 
