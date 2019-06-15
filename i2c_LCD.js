@@ -14,8 +14,6 @@ module.exports = function (RED) {
   //Globals for NODES
   //on deploy start set true so lcd is only triggered once
   let first_deploy;
-  // see if input node is deployed
-  let deployed_i2c_LCD_Input;
   //require adafruit-i2c-lcd node
   const LCDPLATE = require('lcdi2c');
   let lcd;
@@ -91,50 +89,11 @@ module.exports = function (RED) {
 
     //functions
     function sendthemessage() {
-      //check to see if msg was sent to the msg.line1 & Line2
-      if (((text_in_line1 != null) && (typeof text_in_line1 !== 'undefined'))
-          && ((text_in_line2 != null) && (typeof text_in_line2 !== 'undefined'))) {
-
-        if (text_in_line1.indexOf('\'') > -1) {
-          text_in_line1 = text_in_line1.replace(/'/g, "\\x27");
-        }
-        if (text_in_line2.indexOf('\'') > -1) {
-          text_in_line1 = text_in_line1.replace(/'/g, "\\x27");
-        }
-
-        //fix escape char
-        text_in_line1 = '\'' + text_in_line1 + '\'';
-        text_in_line2 = '\'' + text_in_line2 + '\'';
-        //send message
-
-        lcd.setCursor(0, 0); // 0x80 = first line on lcd
-        lcd.print(text_in_line1);
-        lcd.setCursor(0, 1); // 0xC0 = second line on lcd
-        lcd.print(text_in_line2);
-      }
-      //check to see if msg was sent to the msg.line1 & nothing sent to Line2
-      else if (((text_in_line1 != null) && (typeof text_in_line1 !== 'undefined'))
-          && ((text_in_line2 == null) || (typeof text_in_line2 === 'undefined'))) {
-        if (text_in_line1.indexOf('\'') > -1) {
-          text_in_line1 = text_in_line1.replace(/'/g, "\\x27");
-        }
-
-        //fix escape char
-        text_in_line1 = '\'' + text_in_line1 + '\'';
-        //send message
+      if ((text_in_line1 != null) && (typeof text_in_line1 !== 'undefined')) {
         lcd.setCursor(0, 0); // 0x80 = first line on lcd
         lcd.print(text_in_line1);
       }
-      //check to see if msg was sent to the msg.line2 & nothing sent to Line1
-      else if (((text_in_line2 != null) && (typeof text_in_line2 !== 'undefined'))
-          && ((text_in_line1 == null) || (typeof text_in_line1 === 'undefined'))) {
-        if (text_in_line2.indexOf('\'') > -1) {
-          text_in_line1 = text_in_line1.replace(/'/g, "\\x27");
-        }
-
-        //fix escape char
-        text_in_line2 = '\'' + text_in_line2 + '\'';
-        //send message
+      if ((text_in_line2 != null) && (typeof text_in_line2 !== 'undefined')) {
         lcd.setCursor(0, 1); // 0xC0 = second line on lcd
         lcd.print(text_in_line2);
       }
@@ -224,58 +183,46 @@ module.exports = function (RED) {
         //call the function and set time to execute
         timer_led_off = setTimeout(function_led_off, this.timeLimit);
       } else if (this.settings === "Advanced") {
-//clear
         // if clear of msg.* is empty, null or undefined then warn user and stop do not pass go
         if ((this.advanced_clear === null) || (this.advanced_clear === undefined)) {
           return this.error("msg \"clear\" was not set. Please set msg \"clear\" to not be null or a undefined value", msg);
         }
-
-//close
         // if close of msg.* is empty, null or undefined then warn user and stop do not pass go
         else if ((this.advanced_close === null) || (this.advanced_close === undefined)) {
           return this.error("msg \"close\" was not set. Please set msg \"close\" to not be null or a undefined value", msg);
         }
-//color
         // if color of msg.* is empty, null or undefined then warn user and stop do not pass go
         else if ((this.advanced_onoff === null) || (this.advanced_onoff === undefined)) {
           return this.error("msg \"onoff\" was not set. Please set msg \"onoff\" to not be null or a undefined value", msg);
         }
-//char0
         // if char0 of msg.* is empty, null or undefined then warn user and stop do not pass go
         else if ((this.advanced_char0 === null) || (this.advanced_char0 === undefined)) {
           return this.error("msg char0 was not set. Please set msg char0 to not be null or a undefined value", msg);
         }
-//char1
         // if char1 of msg.* is empty, null or undefined then warn user and stop do not pass go
         else if ((this.advanced_char1 === null) || (this.advanced_char1 === undefined)) {
           return this.error("msg char1 was not set. Please set msg char1 to not be null or a undefined value", msg);
         }
-//char2
         // if char2 of msg.* is empty, null or undefined then warn user and stop do not pass go
         else if ((this.advanced_char2 === null) || (this.advanced_char2 === undefined)) {
           return this.error("msg char2 was not set. Please set msg char2 to not be null or a undefined value", msg);
         }
-//char3
         // if char3 of msg.* is empty, null or undefined then warn user and stop do not pass go
         else if ((this.advanced_char3 === null) || (this.advanced_char3 === undefined)) {
           return this.error("msg char3 was not set. Please set msg char3 to not be null or a undefined value", msg);
         }
-//char4
         // if char4 of msg.* is empty, null or undefined then warn user and stop do not pass go
         else if ((this.advanced_char4 === null) || (this.advanced_char4 === undefined)) {
           return this.error("msg char4 was not set. Please set msg char4 to not be null or a undefined value", msg);
         }
-//char5
         // if char5 of msg.* is empty, null or undefined then warn user and stop do not pass go
         else if ((this.advanced_char5 === null) || (this.advanced_char5 === undefined)) {
           return this.error("msg char5 was not set. Please set msg char5 to not be null or a undefined value", msg);
         }
-//char6
         // if char6 of msg.* is empty, null or undefined then warn user and stop do not pass go
         else if ((this.advanced_char6 === null) || (this.advanced_char6 === undefined)) {
           return this.error("msg char6 was not set. Please set msg char6 to not be null or a undefined value", msg);
         }
-//char7
         // if char7 of msg.* is empty, null or undefined then warn user and stop do not pass go
         else if ((this.advanced_char7 === null) || (this.advanced_char7 === undefined)) {
           return this.error("msg char7 was not set. Please set msg char7 to not be null or a undefined value", msg);
