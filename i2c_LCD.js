@@ -93,7 +93,6 @@ module.exports = function (RED) {
         lcd.println(text_in_line1, 1);
       }
       if ((text_in_line2 != null) && (typeof text_in_line2 !== 'undefined')) {
-        lcd.setCursor(0, 1); // 0xC0 = second line on lcd
         lcd.println(text_in_line2, 2);
       }
     }
