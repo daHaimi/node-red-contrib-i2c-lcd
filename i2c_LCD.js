@@ -90,12 +90,11 @@ module.exports = function (RED) {
     //functions
     function sendthemessage() {
       if ((text_in_line1 != null) && (typeof text_in_line1 !== 'undefined')) {
-        lcd.setCursor(0, 0); // 0x80 = first line on lcd
-        lcd.print(text_in_line1);
+        lcd.println(text_in_line1, 1);
       }
       if ((text_in_line2 != null) && (typeof text_in_line2 !== 'undefined')) {
         lcd.setCursor(0, 1); // 0xC0 = second line on lcd
-        lcd.print(text_in_line2);
+        lcd.println(text_in_line2, 2);
       }
     }
 
