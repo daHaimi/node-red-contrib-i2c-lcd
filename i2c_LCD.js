@@ -150,10 +150,15 @@ module.exports = function (RED) {
 
     //when node gets a input
     this.on("input", function (msg) {
-      //get text sent to msg.line1
-      text_in_line1 = RED.util.getMessageProperty(msg, node.Line1);
+      let buf = RED.util.getMessageProperty(msg, node.Line1);
+      if (buf) {
+        text_in_line1 = buf;
+      }
       //get text sent to msg.line2
-      text_in_line2 = RED.util.getMessageProperty(msg, node.Line2);
+      buf = RED.util.getMessageProperty(msg, node.Line2);
+      if (buf) {
+        text_in_line2 = buf;
+      }
 
       // Trim messages but let msg1 continue if msg2 is not set
       if (text_in_line2) {
