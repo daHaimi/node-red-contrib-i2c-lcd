@@ -157,6 +157,13 @@ module.exports = function (RED) {
       //get text sent to msg.line2
       text_in_line2 = RED.util.getMessageProperty(msg, node.Line2);
 
+      // Trim messages but let msg1 continue if msg2 is not set
+      text_in_line2 = text_in_line2.substr(0, 16);
+      if (text_in_line2.length < 1 && text_in_line1.length > 16) {
+        text_in_line2 = text_in_line1.substr(16);
+      }
+      text_in_line1 = text_in_line1.substr(0, 16);
+
       //clear status icon
       node.status({});
 
